@@ -28,19 +28,5 @@ namespace Data.Meld
 
             return melds;
         }
-
-        public bool IsCardApplicableToMeld(List<MyCard> meld, MyCard cardToAdd)
-        {
-            if (!meld.Any())
-                return true;
-
-            if (meld[0].Suit != cardToAdd.Suit)
-                return false;
-
-            if (meld.Last().Rank + 1 == cardToAdd.Rank)
-                return true;
-
-            return false;
-        }
     }
 }

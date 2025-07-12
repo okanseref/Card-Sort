@@ -3,7 +3,7 @@ using Data.Card;
 
 namespace Data.Meld.Extension
 {
-    public static class MeldGeneratorExtensions
+    public static class MeldRuleExtensions
     {
         public static List<List<MyCard>> GenerateAllMelds(this List<IMeldRule> meldGenerators, List<MyCard> myCards)
         {
