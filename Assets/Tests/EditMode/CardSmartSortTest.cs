@@ -83,5 +83,30 @@ namespace Tests.EditMode
             
             Assert.AreEqual(deadwoodSum, 15);
         }
+        
+        [Test]
+        public void AllDeadwood()
+        {
+            var myCards = new List<MyCard>
+            {
+                new MyCard(2, 'H'), new MyCard(4, 'C'), new MyCard(5, 'S'),
+                new MyCard(7, 'D'), new MyCard(8, 'S'), new MyCard(9, 'C'),
+                new MyCard(11, 'H'), new MyCard(12, 'D'), new MyCard(13, 'S'),
+                new MyCard(6, 'C'), new MyCard(3, 'H')
+            };
+
+            var meldGenerators = new List<IMeldRule>();
+            meldGenerators.Add(new GroupMeldRule());
+            meldGenerators.Add(new RunMeldRule());
+
+            var melds = meldGenerators.GenerateAllMelds(myCards);
+            
+            var cardSorter = new DPCardSorter();
+            cardSorter.SortCards(myCards, melds);
+            
+            var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
+            
+            Assert.AreEqual(deadwoodSum, 80);
+        }
     }
 }
