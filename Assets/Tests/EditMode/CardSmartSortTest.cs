@@ -39,10 +39,10 @@ namespace Tests.EditMode
         {
             var myCards = new List<MyCard>
             {
-                new MyCard(3, 'H'), new MyCard(4, 'H'), new MyCard(5, 'H'), // Run
-                new MyCard(5, 'D'), new MyCard(5, 'S'), new MyCard(6, 'H'), // 3x5 + continuation
-                new MyCard(6, 'C'), new MyCard(7, 'H'),                     // Another run possible
-                new MyCard(10, 'S'), new MyCard(11, 'S'), new MyCard(12, 'S') // Run
+                new MyCard(3, 'H'), new MyCard(4, 'H'), new MyCard(5, 'H'),
+                new MyCard(5, 'D'), new MyCard(5, 'S'), new MyCard(6, 'H'),
+                new MyCard(6, 'C'), new MyCard(7, 'H'),
+                new MyCard(10, 'S'), new MyCard(11, 'S'), new MyCard(12, 'S')
             };
 
             var meldGenerators = new List<IMeldRule>();
@@ -57,6 +57,31 @@ namespace Tests.EditMode
             var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
             Assert.AreEqual(deadwoodSum, 16);
+        }
+        
+        [Test]
+        public void CardSortTestMultipleSets()
+        {
+            var myCards = new List<MyCard>
+            {
+                new MyCard(8, 'H'), new MyCard(8, 'D'), new MyCard(8, 'C'), // Set of 8s
+                new MyCard(9, 'H'), new MyCard(10, 'H'), new MyCard(11, 'H'), // Run
+                new MyCard(9, 'D'), new MyCard(10, 'D'), new MyCard(11, 'D'), // Another run
+                new MyCard(3, 'S'), new MyCard(12, 'C') // Deadwood cards
+            };
+
+            var meldGenerators = new List<IMeldRule>();
+            meldGenerators.Add(new GroupMeldRule());
+            meldGenerators.Add(new RunMeldRule());
+
+            var melds = meldGenerators.GenerateAllMelds(myCards);
+            
+            var cardSorter = new DPCardSorter();
+            cardSorter.SortCards(myCards, melds);
+            
+            var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
+            
+            Assert.AreEqual(deadwoodSum, 15);
         }
     }
 }
