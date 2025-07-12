@@ -75,6 +75,7 @@ namespace Data.Sorter
                 for (int i = 0; i < n; i++)
                     if (((mask >> i) & 1) == 1)
                         meld.Add(myCards[i]);
+                meld.Sort((x,y)=> x.Rank - y.Rank);
                 usedMelds.Add(meld);
 
                 cur = prev;
