@@ -57,14 +57,20 @@ namespace Data.Meld.Extension
                 if (!matched)
                 {
                     deadwoodSum += myCards[i].Rank;
-                    Debug.Log($"Deadwood: {myCards[i]} (value {myCards[i].Rank})");
+                    LogToConsole($"Deadwood: {myCards[i]} (value {myCards[i].Rank})");
                     i++;
                 }
             }
 
-            Debug.Log($"Total Deadwood Sum: {deadwoodSum}");
+            LogToConsole($"Total Deadwood Sum: {deadwoodSum}");
             return deadwoodSum;
         }
+        
+        private static void LogToConsole(string output)
+        {
+#if UNITY_EDITOR
+            Debug.Log(output);
+#endif
+        }
     }
-
 }

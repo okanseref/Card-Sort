@@ -30,7 +30,7 @@ namespace Data.Sorter
                     sum += myCard.Rank;
                 }
 
-                Debug.Log($"Meld: {string.Join(", ", meld)}  Mask: {Convert.ToString(mask, 2).PadLeft(n, '0')}  Value: {sum}");
+                LogToConsole($"Meld: {string.Join(", ", meld)}  Mask: {Convert.ToString(mask, 2).PadLeft(n, '0')}  Value: {sum}");
 
                 // try to apply this meld on every existing state
                 for (int state = 0; state < maxState; state++)
@@ -44,11 +44,11 @@ namespace Data.Sorter
                     {
                         dp[next] = newScore;
                         parent[next] = (state, mask);
-                        Debug.Log($" - state {Convert.ToString(state,2).PadLeft(n,'0')} → {Convert.ToString(next,2).PadLeft(n,'0')}: score {dp[state]} → {newScore}");
+                        LogToConsole($" - state {Convert.ToString(state,2).PadLeft(n,'0')} → {Convert.ToString(next,2).PadLeft(n,'0')}: score {dp[state]} → {newScore}");
                     }
                 }
 
-                Debug.Log("\n");
+                LogToConsole("\n");
             }
 
             // find best end-state
@@ -61,8 +61,8 @@ namespace Data.Sorter
                     bestState = s;
                 }
             }
-
-            Debug.Log($"\nMinimum deadwood score: {bestScore}");
+            
+            LogToConsole($"\nMinimum deadwood score: {bestScore}");
 
             // backtrack melds
             var usedMelds = new List<List<MyCard>>();
@@ -88,23 +88,30 @@ namespace Data.Sorter
             
             myCards.Clear();
             
-            Debug.Log("\n▶Melds used:");
+            LogToConsole("\n▶Melds used:");
             foreach (var m in usedMelds)
             {
-                Debug.Log("  • " + string.Join(", ", m));
+                LogToConsole("  • " + string.Join(", ", m));
                 myCards.AddRange(m);
             }
 
-            Debug.Log("\nDeadwood myCards:");
+            LogToConsole("\nDeadwood myCards:");
             foreach (var c in deadwood)
             {
-                Debug.Log($"  • {c}  (value {c.Rank})");
+                LogToConsole($"  • {c}  (value {c.Rank})");
                 myCards.Add(c);
             }
 
-            Debug.Log("\nSorted My Cards:");
+            LogToConsole("\nSorted My Cards:");
             foreach (var myCard in myCards)
-                Debug.Log($"  • {myCard}  (value {myCard.Rank})");
+                LogToConsole($"  • {myCard}  (value {myCard.Rank})");
+        }
+        
+        private void LogToConsole(string output)
+        {
+#if UNITY_EDITOR
+            Debug.Log(output);
+#endif
         }
     }
 }
