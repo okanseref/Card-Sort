@@ -106,6 +106,5 @@ namespace Data.Sorter
             foreach (var myCard in myCards)
                 Debug.Log($"  • {myCard}  (value {myCard.Rank})");
         }
-
     }
 }

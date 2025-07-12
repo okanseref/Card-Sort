@@ -28,8 +28,35 @@ namespace Tests.EditMode
             
             var cardSorter = new DPCardSorter();
             cardSorter.SortCards(myCards, melds);
+
+            var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
-            Assert.AreEqual(true, true);
+            Assert.AreEqual(deadwoodSum, 15);
+        }
+        
+        [Test]
+        public void CardSortTestOverlap()
+        {
+            var myCards = new List<MyCard>
+            {
+                new MyCard(3, 'H'), new MyCard(4, 'H'), new MyCard(5, 'H'), // Run
+                new MyCard(5, 'D'), new MyCard(5, 'S'), new MyCard(6, 'H'), // 3x5 + continuation
+                new MyCard(6, 'C'), new MyCard(7, 'H'),                     // Another run possible
+                new MyCard(10, 'S'), new MyCard(11, 'S'), new MyCard(12, 'S') // Run
+            };
+
+            var meldGenerators = new List<IMeldRule>();
+            meldGenerators.Add(new GroupMeldRule());
+            meldGenerators.Add(new RunMeldRule());
+
+            var melds = meldGenerators.GenerateAllMelds(myCards);
+            
+            var cardSorter = new DPCardSorter();
+            cardSorter.SortCards(myCards, melds);
+            
+            var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
+            
+            Assert.AreEqual(deadwoodSum, 16);
         }
     }
 }
