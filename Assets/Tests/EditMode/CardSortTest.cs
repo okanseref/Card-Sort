@@ -20,9 +20,9 @@ namespace Tests.EditMode
                 new MyCard(13, 'C'), new MyCard(2, 'S')
             };
 
-            var meldGenerators = new List<IMeldGenerator>();
-            meldGenerators.Add(new GroupMeldGenerator());
-            meldGenerators.Add(new RunMeldGenerator());
+            var meldGenerators = new List<IMeldRule>();
+            meldGenerators.Add(new GroupMeldRule());
+            meldGenerators.Add(new RunMeldRule());
 
             var melds = meldGenerators.GenerateAllMelds(myCards);
             

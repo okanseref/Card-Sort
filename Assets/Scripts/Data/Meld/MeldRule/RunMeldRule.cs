@@ -5,7 +5,7 @@ using Data.Card;
 namespace Data.Meld
 {
     // For 1-2-3 Melds
-    public class RunMeldGenerator : IMeldGenerator
+    public class RunMeldRule : IMeldRule
     {
         public List<List<MyCard>> GenerateMelds(List<MyCard> myCards)
         {
@@ -27,6 +27,20 @@ namespace Data.Meld
             }
 
             return melds;
+        }
+
+        public bool IsCardApplicableToMeld(List<MyCard> meld, MyCard cardToAdd)
+        {
+            if (!meld.Any())
+                return true;
+
+            if (meld[0].Suit != cardToAdd.Suit)
+                return false;
+
+            if (meld.Last().Rank + 1 == cardToAdd.Rank)
+                return true;
+
+            return false;
         }
     }
 }

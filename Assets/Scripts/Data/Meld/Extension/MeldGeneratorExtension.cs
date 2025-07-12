@@ -5,7 +5,7 @@ namespace Data.Meld.Extension
 {
     public static class MeldGeneratorExtensions
     {
-        public static List<List<MyCard>> GenerateAllMelds(this List<IMeldGenerator> meldGenerators, List<MyCard> myCards)
+        public static List<List<MyCard>> GenerateAllMelds(this List<IMeldRule> meldGenerators, List<MyCard> myCards)
         {
             var melds = new List<List<MyCard>>();
             
