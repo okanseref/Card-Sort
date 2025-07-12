@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Data.Sorter
 {
-    public class DPCardSorter : ICardSorter
+    public class DPCardSorter
     {
         public void SortCards(List<MyCard> myCards, List<List<MyCard>> melds)
         {
