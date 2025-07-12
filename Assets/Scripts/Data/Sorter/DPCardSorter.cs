@@ -62,7 +62,7 @@ namespace Data.Sorter
                 }
             }
 
-            Debug.Log($"\n✅ Minimum deadwood score: {bestScore}");
+            Debug.Log($"\nMinimum deadwood score: {bestScore}");
 
             // backtrack melds
             var usedMelds = new List<List<MyCard>>();
@@ -80,19 +80,31 @@ namespace Data.Sorter
                 cur = prev;
             }
 
-            Debug.Log("\n▶️ Melds used:");
-            foreach (var m in usedMelds)
-                Debug.Log("  • " + string.Join(", ", m));
-
             // compute deadwood myCards
             var deadwood = new List<MyCard>();
             for (int i = 0; i < n; i++)
                 if (((bestState >> i) & 1) == 0)
                     deadwood.Add(myCards[i]);
+            
+            myCards.Clear();
+            
+            Debug.Log("\n▶Melds used:");
+            foreach (var m in usedMelds)
+            {
+                Debug.Log("  • " + string.Join(", ", m));
+                myCards.AddRange(m);
+            }
 
-            Debug.Log("\n💀 Deadwood myCards:");
+            Debug.Log("\nDeadwood myCards:");
             foreach (var c in deadwood)
+            {
                 Debug.Log($"  • {c}  (value {c.Rank})");
+                myCards.Add(c);
+            }
+
+            Debug.Log("\nSorted My Cards:");
+            foreach (var myCard in myCards)
+                Debug.Log($"  • {myCard}  (value {myCard.Rank})");
         }
 
     }
