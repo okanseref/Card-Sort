@@ -12,8 +12,9 @@ namespace Managers
 
         private void OnGameStartSignal()
         {
-            ServiceLocator.Resolve<SceneManager>().UnloadScene(SceneConstants.MainMenuScene);
-            ServiceLocator.Resolve<SceneManager>().LoadSceneAdditive(SceneConstants.CardGameScene);
+            var loaderViewController = ServiceLocator.Resolve<LoaderViewController>();
+            loaderViewController.EnableView();
+            ServiceLocator.Resolve<SceneManager>().LoadScene(SceneConstants.CardGameScene, onComplete: loaderViewController.OnLoadFinished);
         }
     }
 }

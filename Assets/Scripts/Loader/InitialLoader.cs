@@ -11,8 +11,10 @@ namespace Loader
             
             ServiceLocator.Register(gameObject.AddComponent<GameManager>());
             ServiceLocator.Register(gameObject.AddComponent<SceneManager>());
-            
-            ServiceLocator.Resolve<SceneManager>().LoadSceneAdditive(SceneConstants.MainMenuScene);
+
+            var loaderViewController = ServiceLocator.Resolve<LoaderViewController>();
+            loaderViewController.EnableView();
+            ServiceLocator.Resolve<SceneManager>().LoadScene(SceneConstants.MainMenuScene, onComplete: loaderViewController.OnLoadFinished);
         }
     }
 }
