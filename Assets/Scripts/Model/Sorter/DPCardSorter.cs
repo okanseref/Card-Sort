@@ -81,12 +81,16 @@ namespace Data.Sorter
                 cur = prev;
             }
 
+            usedMelds.Sort((x,y)=> x.Sum((x1)=> x1.Rank) - y.Sum((y1)=> y1.Rank));
+            
             // compute deadwood myCards
             var deadwood = new List<MyCard>();
             for (int i = 0; i < n; i++)
                 if (((bestState >> i) & 1) == 0)
                     deadwood.Add(myCards[i]);
             
+            deadwood.Sort((x,y)=> (x.Rank - y.Rank) * 100 + x.Suit - y.Suit);
+
             myCards.Clear();
             
             LogToConsole("\n▶Melds used:");

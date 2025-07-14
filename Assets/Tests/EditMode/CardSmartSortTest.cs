@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Data.Card;
 using Data.Meld;
 using Data.Sorter;
+using Extensions;
 using Model.Meld.Extension;
 using NUnit.Framework;
 
@@ -107,6 +109,38 @@ namespace Tests.EditMode
             var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
             Assert.AreEqual(deadwoodSum, 80);
+        }
+        
+        [Test]
+        public void CardSortTwiceTest()
+        {
+            var myCards = new List<MyCard>
+            {
+                new MyCard(4, 'H'), new MyCard(5, 'H'), new MyCard(6, 'H'),
+                new MyCard(7, 'C'), new MyCard(7, 'D'), new MyCard(7, 'S'),
+                new MyCard(9, 'D'), new MyCard(10, 'D'), new MyCard(11, 'D'),
+                new MyCard(13, 'C'), new MyCard(2, 'S')
+            };
+
+            var meldGenerators = new List<IMeldRule>();
+            meldGenerators.Add(new RunMeldRule());
+
+            var melds = meldGenerators.GenerateAllMelds(myCards);
+            
+            var cardSorter = new DPCardSorter();
+            cardSorter.SortCards(myCards, melds);
+            var firstSortResult = new List<MyCard>(myCards);
+            myCards.ShuffleList();
+            cardSorter.SortCards(myCards, melds);
+
+            var diffAmount = 0;
+            for (int i = 0; i < myCards.Count; i++)
+            {
+                if (myCards[i] != firstSortResult[i])
+                    diffAmount++;
+            }
+            
+            Assert.AreEqual(diffAmount, 0);
         }
     }
 }

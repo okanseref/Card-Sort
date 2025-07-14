@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Controller.Signal;
 using UnityEngine;
 using View.Factory;
@@ -26,7 +27,10 @@ namespace View.Card
                 var cardView = factory.GetCardView((myCard.Rank, myCard.Suit), _handCardHorizontalFitter.transform);
                 _myCardViews.Add(cardView);
             }
+
+            _handCardHorizontalFitter.CalculateLayout(_myCardViews.Count);
             
+
             _handCardHorizontalFitter.ApplyLayout(_myCardViews);
         }
 
@@ -34,19 +38,17 @@ namespace View.Card
         {
             foreach (var cardMove in signal.CardMoves)
             {
-                (_myCardViews[cardMove.fromIndex].transform.position,
-                    _myCardViews[cardMove.toIndex].transform.position) = (
-                    _myCardViews[cardMove.toIndex].transform.position,
-                    _myCardViews[cardMove.fromIndex].transform.position);
-                (_myCardViews[cardMove.fromIndex].transform.rotation,
-                    _myCardViews[cardMove.toIndex].transform.rotation) = (
-                    _myCardViews[cardMove.toIndex].transform.rotation,
-                    _myCardViews[cardMove.fromIndex].transform.rotation);
-                (_myCardViews[cardMove.fromIndex], _myCardViews[cardMove.toIndex]) = (_myCardViews[cardMove.toIndex],
-                    _myCardViews[cardMove.fromIndex]);
+                _handCardHorizontalFitter.MoveCardToPosition(_myCardViews[cardMove.fromIndex], cardMove.toIndex);
             }
-            
-            _handCardHorizontalFitter.ApplyLayout(_myCardViews);
+
+            var newSortedList = new List<CardView>(_myCardViews);
+
+            foreach (var cardMove in signal.CardMoves)
+            {
+                newSortedList[cardMove.toIndex] = _myCardViews[cardMove.fromIndex];
+            }
+
+            _myCardViews = newSortedList;
         }
     }
 }
