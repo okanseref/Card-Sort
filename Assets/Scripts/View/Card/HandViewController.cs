@@ -1,15 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
-using Data.Card;
+using Controller.Signal;
 using UnityEngine;
-using View.Card;
+using View.Factory;
 
-public class HandViewController : MonoBehaviour
+namespace View.Card
 {
-    [SerializeField] private HandCardHorizontalFitter _handCardHorizontalFitter;
-    
-    public void Init(List<MyCard> myCards)
+    public class HandViewController : MonoBehaviour
     {
+        [SerializeField] private HandCardHorizontalFitter _handCardHorizontalFitter;
+
+        private void Awake()
+        {
+            SignalBus.Instance.Subscribe<CardsInitializedSignal>(InitializeCards);
+        }
         
+        private void InitializeCards(CardsInitializedSignal initializedSignal)
+        {
+            var factory = ServiceLocator.Resolve<CardViewFactory>();
+            foreach (var myCard in initializedSignal.MyCards)
+            {
+                factory.GetCardView((myCard.Rank, myCard.Suit), _handCardHorizontalFitter.transform);
+            }
+        }
     }
 }
