@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 310a49cfea4e47ddae2255d4f22a0377, type: 3}
+  m_Name: CardViewInfoCollection
+  m_EditorClassIdentifier: 
+  CardViewInfos:
+  - Asset: {fileID: 21300000, guid: dc42cb4c80caefe40888965db10c0e7f, type: 3}
+    Rank: 2
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: cce56def372c27547b266b1cf7fcd3c7, type: 3}
+    Rank: 3
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 1ada5920fbdf2cc468da6915eddb13c9, type: 3}
+    Rank: 4
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 8731f11e78e705a46a8c9045e8d8f472, type: 3}
+    Rank: 5
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 6572f5ae519e5ea408f19914b1f37ce5, type: 3}
+    Rank: 6
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 926764b4c5bdd384da7bfdb0aa75063d, type: 3}
+    Rank: 7
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: cc874b9912cdb2947a3527892546e53e, type: 3}
+    Rank: 8
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 8c337e49c2c7b1646a0caacc94559669, type: 3}
+    Rank: 9
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: af63a929e2ec24d459ed30781c327d74, type: 3}
+    Rank: 10
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 3dce9f7ce01ce16409d0e356867ae4bc, type: 3}
+    Rank: 1
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 72925133c7803374bb052659e892d6d9, type: 3}
+    Rank: 11
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 2eddd1fffec48fc468a9610e164ee935, type: 3}
+    Rank: 13
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: c80cb1f667f8ef14cb3348206b8b4e67, type: 3}
+    Rank: 12
+    Suit: 99
+  - Asset: {fileID: 21300000, guid: 3e21d5671e08b894db05700fd1cd6eae, type: 3}
+    Rank: 2
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: eee2db1a1c89f1e41956cc709af56ccd, type: 3}
+    Rank: 3
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 78b7e9c73b745124b9214ff93e93aad2, type: 3}
+    Rank: 4
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 36cd47127c17cbc4298972f74387a508, type: 3}
+    Rank: 5
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 44dc66cca9aae484796b139526f487bf, type: 3}
+    Rank: 6
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: cc5800c32b20a5c4da352fb0c12975a0, type: 3}
+    Rank: 7
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 23a4ee03b5dddc34eb0438a44f02f4bf, type: 3}
+    Rank: 8
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 92a936885151c8741a4b1edc24dd6472, type: 3}
+    Rank: 9
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 5d4a4344891f3224f89a966f22d262b2, type: 3}
+    Rank: 10
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: d8d838ecfe9c9c14c9efd7a02314532b, type: 3}
+    Rank: 1
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 9e69d2c5a6fc1af41b9737975dccd491, type: 3}
+    Rank: 11
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 035b4ca2a265d4645b322151157d0678, type: 3}
+    Rank: 13
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 3f2a162f5b8a6a74599817c3d6a1326f, type: 3}
+    Rank: 12
+    Suit: 100
+  - Asset: {fileID: 21300000, guid: 9fdb5401a26c1524e9163dd206892907, type: 3}
+    Rank: 2
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 223185c1029b6ec4188f7313be1cf780, type: 3}
+    Rank: 3
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: ef48cf21754d0a54d8561777799f57cb, type: 3}
+    Rank: 4
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 11ef49b95a84b374aad498191b414882, type: 3}
+    Rank: 5
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 8ee57b497166aee4c91d31a4798c6e36, type: 3}
+    Rank: 6
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: cf3d08dcda7b2bc4898b904adc0f6e6c, type: 3}
+    Rank: 7
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: bd0fbcf4a9e5b324c87750642f5132d4, type: 3}
+    Rank: 8
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 61bb2b320b300a545807fc4923d292dd, type: 3}
+    Rank: 9
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 269cf732d1f761e4d816da6b2813d78d, type: 3}
+    Rank: 10
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 67549e5d8a2993c48a42ac14f425531c, type: 3}
+    Rank: 1
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: c6a342946d10b4644bd1030e3d545e96, type: 3}
+    Rank: 11
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 79070a4083967d749a6669f195ad1e37, type: 3}
+    Rank: 13
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: e1afb2dbe792a5e41a23b7393363c0b0, type: 3}
+    Rank: 12
+    Suit: 104
+  - Asset: {fileID: 21300000, guid: 01c73b018ee783b4380e51a0fca521db, type: 3}
+    Rank: 2
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 7c8290821d5f7dd4499550749de60420, type: 3}
+    Rank: 3
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: c595476645d1ae344bf6276b7e855579, type: 3}
+    Rank: 4
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: b7bd2ac0cda784f44a770f0bb4edc5ed, type: 3}
+    Rank: 5
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 2cfb40e06cc9e9a4bad21c9036ac3a8c, type: 3}
+    Rank: 6
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 3cbd17537f28ec243aaa9902862b8a7e, type: 3}
+    Rank: 7
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 6a75c4af2ac659145bf9f4ba04f65da6, type: 3}
+    Rank: 8
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 4abdff50e40b1184c9ea1bae4e12b62b, type: 3}
+    Rank: 9
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 80638aaddc04851499c6d05bac674965, type: 3}
+    Rank: 10
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 9db09eebafa3d5e4bac301434b9eb218, type: 3}
+    Rank: 1
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: ef6efae5b8d7ac049977eb535f2b1aef, type: 3}
+    Rank: 11
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: 5e3dd2a8729a18f49945e7d33fa209c5, type: 3}
+    Rank: 13
+    Suit: 115
+  - Asset: {fileID: 21300000, guid: fbcbfb56405e4814b8f2d04748575dfc, type: 3}
+    Rank: 12
+    Suit: 115
