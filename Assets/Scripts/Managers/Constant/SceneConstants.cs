@@ -1,4 +1,4 @@
-﻿namespace Controller.Constant
+﻿namespace Managers
 {
     public static class SceneConstants
     {

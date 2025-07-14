@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Controller
+namespace Managers
 {
-    public class SceneController : MonoBehaviour
+    public class SceneManager : MonoBehaviour
     {
         public void LoadScene(string sceneName, System.Action<float> onProgress = null, System.Action onComplete = null)
         {
@@ -14,7 +14,7 @@ namespace Controller
         private IEnumerator LoadSceneRoutine(string sceneName, System.Action<float> onProgress,
             System.Action onComplete)
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
+            AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
             operation.allowSceneActivation = false;
 
             while (operation.progress < 0.9f)
@@ -44,7 +44,7 @@ namespace Controller
         private IEnumerator LoadAdditiveRoutine(string sceneName, System.Action<float> onProgress,
             System.Action onComplete)
         {
-            AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
             operation.allowSceneActivation = false;
 
             while (operation.progress < 0.9f)
@@ -72,7 +72,7 @@ namespace Controller
 
         private IEnumerator UnloadRoutine(string sceneName, System.Action onComplete)
         {
-            AsyncOperation operation = SceneManager.UnloadSceneAsync(sceneName);
+            AsyncOperation operation = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(sceneName);
 
             while (!operation.isDone)
                 yield return null;

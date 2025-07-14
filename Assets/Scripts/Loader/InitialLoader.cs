@@ -1,5 +1,4 @@
-using Controller;
-using Controller.Constant;
+using Managers;
 using UnityEngine;
 
 namespace Loader
@@ -10,10 +9,10 @@ namespace Loader
         {
             DontDestroyOnLoad(this);
             
-            ServiceLocator.Register(gameObject.AddComponent<GameController>());
-            ServiceLocator.Register(gameObject.AddComponent<SceneController>());
+            ServiceLocator.Register(gameObject.AddComponent<GameManager>());
+            ServiceLocator.Register(gameObject.AddComponent<SceneManager>());
             
-            ServiceLocator.Resolve<SceneController>().LoadSceneAdditive(SceneConstants.MainMenuScene);
+            ServiceLocator.Resolve<SceneManager>().LoadSceneAdditive(SceneConstants.MainMenuScene);
         }
     }
 }
