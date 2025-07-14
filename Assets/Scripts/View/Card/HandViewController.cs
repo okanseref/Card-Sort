@@ -30,7 +30,6 @@ namespace View.Card
 
             _handCardHorizontalFitter.CalculateLayout(_myCardViews.Count);
             
-
             _handCardHorizontalFitter.ApplyLayout(_myCardViews);
         }
 

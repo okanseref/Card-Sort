@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace View.Card
@@ -8,6 +9,7 @@ namespace View.Card
         [SerializeField] private float _spacing = 1.0f;   // Space between cardViews
         [SerializeField] private float _arcHeight = 1f;
         [SerializeField] private float _maxRotation = 15f; // degrees, for edges
+        [SerializeField] private float _animDuration = 0.3f; // degrees, for edges
         
         private List<Pose> _poses = new();
         
@@ -37,8 +39,8 @@ namespace View.Card
 
         public void MoveCardToPosition(CardView cardView, int positionIndex)
         {
-            cardView.transform.position = _poses[positionIndex].position;
-            cardView.transform.rotation = _poses[positionIndex].rotation;
+            cardView.transform.DOMove(_poses[positionIndex].position, _animDuration);
+            cardView.transform.DORotate(_poses[positionIndex].rotation.eulerAngles, _animDuration);
             cardView.SpriteRenderer.sortingOrder = positionIndex;
         }
         

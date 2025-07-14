@@ -15,7 +15,7 @@ namespace Controller
         private RunMeldRule _runMeldRule = new();
         private GroupMeldRule _groupMeldRule = new();
 
-        private new List<MyCard> _myCards;
+        private List<MyCard> _myCards;
         void Start()
         {
             _myCards = new List<MyCard>
