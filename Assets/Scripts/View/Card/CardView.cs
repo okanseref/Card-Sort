@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace View.CardView
+namespace View.Card
 {
     public class CardView : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] public SpriteRenderer SpriteRenderer;
         public void Init(Sprite sprite)
         {
-            spriteRenderer.sprite = sprite;
+            SpriteRenderer.sprite = sprite;
         }
     }
 }

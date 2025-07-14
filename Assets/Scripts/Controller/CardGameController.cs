@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using Controller.Signal;
 using Data.Card;
 using Data.Meld;
-using Data.Meld.Extension;
 using Data.Sorter;
 using Model.Card;
+using Model.Meld.Extension;
 using UnityEngine;
 using View.Card.Signal;
 
@@ -12,9 +12,9 @@ namespace Controller
 {
     public class CardGameController : MonoBehaviour
     {
-        private DPCardSorter _cardSorter;
-        private RunMeldRule _runMeldRule;
-        private GroupMeldRule _groupMeldRule;
+        private DPCardSorter _cardSorter = new();
+        private RunMeldRule _runMeldRule = new();
+        private GroupMeldRule _groupMeldRule = new();
 
         private new List<MyCard> _myCards;
         void Start()
@@ -72,7 +72,7 @@ namespace Controller
             
             _cardSorter.SortCards(_myCards, melds);
 
-            var cardMoves = _myCards.GetCardMoves(oldCardOrder);
+            var cardMoves = oldCardOrder.GetCardMoves(_myCards);
             
             SignalBus.Instance.Fire(new CardsSortedSignal(cardMoves));
         }

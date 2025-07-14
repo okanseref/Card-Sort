@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Data.Card;
+using Data.Meld;
 using UnityEngine;
 
-namespace Data.Meld.Extension
+namespace Model.Meld.Extension
 {
     public static class MeldRuleExtensions
     {

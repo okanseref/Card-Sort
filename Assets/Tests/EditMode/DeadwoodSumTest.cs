@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Data.Card;
 using Data.Meld;
-using Data.Meld.Extension;
 using Data.Sorter;
+using Model.Meld.Extension;
 using NUnit.Framework;
 
 namespace Tests.EditMode
