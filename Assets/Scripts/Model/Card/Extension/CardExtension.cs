@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Data.Card;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Model.Card
 {
-    public static class CardListExtension
+    public static class CardExtension
     {
         public static List<(int fromIndex, int toIndex)> GetCardMoves(this List<MyCard> oldMyCards, List<MyCard> myCards)
         {
@@ -20,6 +20,11 @@ namespace Model.Card
             }
 
             return moves;
+        }
+        
+        public static int GetDeadwoodValue(this MyCard myCard)
+        {
+            return Math.Clamp(myCard.Rank, 1, 10);
         }
     }
 }

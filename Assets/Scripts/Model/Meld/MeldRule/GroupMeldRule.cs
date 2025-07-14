@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Data.Card;
+using Model.Card;
 
 namespace Data.Meld
 {
@@ -12,7 +12,7 @@ namespace Data.Meld
             var melds = new List<List<MyCard>>();
 
             // sets
-            foreach (var grp in myCards.GroupBy(c => c.Rank))
+            foreach (var grp in myCards.GroupBy(c => c.GetDeadwoodValue()))
             {
                 var g = grp.ToList();
                 if (g.Count >= 3) melds.Add(g.Take(3).ToList());

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Data.Card;
+using Model.Card;
 
 namespace Controller.Signal
 {

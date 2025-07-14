@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Data.Card;
 using Data.Meld;
+using Model.Card;
 using UnityEngine;
 
 namespace Model.Meld.Extension
@@ -57,8 +57,8 @@ namespace Model.Meld.Extension
 
                 if (!matched)
                 {
-                    deadwoodSum += myCards[i].Rank;
-                    LogToConsole($"Deadwood: {myCards[i]} (value {myCards[i].Rank})");
+                    deadwoodSum += myCards[i].GetDeadwoodValue();
+                    LogToConsole($"Deadwood: {myCards[i]} (value {myCards[i].GetDeadwoodValue()})");
                     i++;
                 }
             }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Card;
 using Data.Meld;
 using Data.Sorter;
+using Model.Card;
 using Model.Meld.Extension;
 using NUnit.Framework;
 

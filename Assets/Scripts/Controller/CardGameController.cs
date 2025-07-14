@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Controller.Signal;
-using Data.Card;
 using Data.Meld;
 using Data.Sorter;
 using Model.Card;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Data.Card;
+using Model.Card;
 using UnityEngine;
 
 namespace Data.Sorter
@@ -12,7 +12,7 @@ namespace Data.Sorter
         {
             int n = myCards.Count;
             int maxState = 1 << n;
-            int totalRankSum = myCards.Sum(c => c.Rank);
+            int totalRankSum = myCards.Sum(c => c.GetDeadwoodValue());
 
             int[] dp = Enumerable.Repeat(int.MaxValue, maxState).ToArray();
             var parent = new (int prevState, int meldMask)[maxState];
@@ -27,7 +27,7 @@ namespace Data.Sorter
                 {
                     int idx = myCards.IndexOf(myCard);
                     mask |= 1 << idx;
-                    sum += myCard.Rank;
+                    sum += myCard.GetDeadwoodValue();
                 }
 
                 LogToConsole($"Meld: {string.Join(", ", meld)}  Mask: {Convert.ToString(mask, 2).PadLeft(n, '0')}  Value: {sum}");
@@ -75,13 +75,13 @@ namespace Data.Sorter
                 for (int i = 0; i < n; i++)
                     if (((mask >> i) & 1) == 1)
                         meld.Add(myCards[i]);
-                meld.Sort((x,y)=> x.Rank - y.Rank);
+                meld.Sort((x,y)=> x.GetDeadwoodValue() - y.GetDeadwoodValue());
                 usedMelds.Add(meld);
 
                 cur = prev;
             }
 
-            usedMelds.Sort((x,y)=> x.Sum((x1)=> x1.Rank) - y.Sum((y1)=> y1.Rank));
+            usedMelds.Sort((x,y)=> x.Sum((x1)=> x1.GetDeadwoodValue()) - y.Sum((y1)=> y1.GetDeadwoodValue()));
             
             // compute deadwood myCards
             var deadwood = new List<MyCard>();
@@ -89,7 +89,7 @@ namespace Data.Sorter
                 if (((bestState >> i) & 1) == 0)
                     deadwood.Add(myCards[i]);
             
-            deadwood.Sort((x,y)=> (x.Rank - y.Rank) * 100 + x.Suit - y.Suit);
+            deadwood.Sort((x,y)=> (x.GetDeadwoodValue() - y.GetDeadwoodValue()) * 100 + x.Suit - y.Suit);
 
             myCards.Clear();
             
@@ -103,13 +103,13 @@ namespace Data.Sorter
             LogToConsole("\nDeadwood myCards:");
             foreach (var c in deadwood)
             {
-                LogToConsole($"  • {c}  (value {c.Rank})");
+                LogToConsole($"  • {c}  (value {c.GetDeadwoodValue()})");
                 myCards.Add(c);
             }
 
             LogToConsole("\nSorted My Cards:");
             foreach (var myCard in myCards)
-                LogToConsole($"  • {myCard}  (value {myCard.Rank})");
+                LogToConsole($"  • {myCard}  (value {myCard.GetDeadwoodValue()})");
         }
         
         private void LogToConsole(string output)

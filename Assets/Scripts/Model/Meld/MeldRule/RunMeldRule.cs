@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Data.Card;
+using Model.Card;
 
 namespace Data.Meld
 {
@@ -13,11 +13,11 @@ namespace Data.Meld
 
             foreach (var grp in myCards.GroupBy(c => c.Suit))
             {
-                var sorted = grp.OrderBy(c => c.Rank).ToList();
+                var sorted = grp.OrderBy(c => c.GetDeadwoodValue()).ToList();
                 for (int i = 0; i <= sorted.Count - 3; i++)
                 {
                     var run = new List<MyCard> { sorted[i] };
-                    for (int j = i + 1; j < sorted.Count && sorted[j].Rank == run.Last().Rank + 1; j++)
+                    for (int j = i + 1; j < sorted.Count && sorted[j].GetDeadwoodValue() == run.Last().GetDeadwoodValue() + 1; j++)
                     {
                         run.Add(sorted[j]);
                         if (run.Count >= 3)

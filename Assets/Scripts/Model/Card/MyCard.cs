@@ -1,4 +1,4 @@
-﻿namespace Data.Card
+﻿namespace Model.Card
 {
     public class MyCard
     {
