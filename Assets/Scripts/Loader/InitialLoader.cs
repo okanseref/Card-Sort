@@ -1,5 +1,6 @@
 using Managers;
 using UnityEngine;
+using View.Factory;
 
 namespace Loader
 {
@@ -11,6 +12,7 @@ namespace Loader
             
             ServiceLocator.Register(gameObject.AddComponent<GameManager>());
             ServiceLocator.Register(gameObject.AddComponent<SceneManager>());
+            ServiceLocator.Register(gameObject.AddComponent<CardViewFactory>());
 
             var loaderViewController = ServiceLocator.Resolve<LoaderViewController>();
             loaderViewController.EnableView();
