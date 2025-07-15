@@ -105,7 +105,6 @@ namespace View.Card
         private void ChangeLock(int change)
         {
             _handViewLock += change;
-            Debug.LogError(_handViewLock);
             SignalBus.Instance.Fire(new HandViewLockSignal(_handViewLock != 0));
         }
 

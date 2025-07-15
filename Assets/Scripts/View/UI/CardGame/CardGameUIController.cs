@@ -16,7 +16,7 @@ namespace View.UI.CardGame
         public Button DefaultThemeButton;
         public Button CuteThemeButton;
         public TextMeshProUGUI DeadwoodCountText;
-
+        
         private void Start()
         {
             SortRunsButton.onClick.AddListener(OnSortRunsClicked);
@@ -28,9 +28,15 @@ namespace View.UI.CardGame
             SignalBus.Instance.Subscribe<CardsSortedSignal>(OnCardsSorted);
             SignalBus.Instance.Subscribe<CardsInitializedSignal>(OnCardsInitialized);
             SignalBus.Instance.Subscribe<DeadwoodUpdatedSignal>(OnDeadwoodUpdated);
+            SignalBus.Instance.Subscribe<HandViewLockSignal>(OnHandViewLocked);
         }
-        
-        
+
+        private void OnHandViewLocked(HandViewLockSignal signal)
+        {
+            SortRunsButton.interactable = !signal.IsLocked;
+            SortGroupButton.interactable = !signal.IsLocked;
+            SortSmartButton.interactable = !signal.IsLocked;
+        }
 
         private void SetDeadwoodText(int deadwoodCount)
         {
