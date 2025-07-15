@@ -9,6 +9,8 @@ namespace Loader
         private void Start()
         {
             DontDestroyOnLoad(this);
+
+            Application.targetFrameRate = 60;
             
             ServiceLocator.Register(gameObject.AddComponent<GameManager>());
             ServiceLocator.Register(gameObject.AddComponent<SceneManager>());
