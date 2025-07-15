@@ -1,5 +1,6 @@
 ﻿using System;
 using Controller.Signal;
+using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,8 @@ namespace View.UI.CardGame
         public Button SortRunsButton;
         public Button SortGroupButton;
         public Button SortSmartButton;
+        public Button DefaultThemeButton;
+        public Button CuteThemeButton;
         public TextMeshProUGUI DeadwoodCountText;
 
         private void Start()
@@ -19,6 +22,8 @@ namespace View.UI.CardGame
             SortRunsButton.onClick.AddListener(OnSortRunsClicked);
             SortGroupButton.onClick.AddListener(OnSortGroupsClicked);
             SortSmartButton.onClick.AddListener(OnSortSmartClicked);
+            DefaultThemeButton.onClick.AddListener(OnDefaultThemeClicked);
+            CuteThemeButton.onClick.AddListener(OnCuteThemeClicked);
             
             SignalBus.Instance.Subscribe<CardsSortedSignal>(OnCardsSorted);
             SignalBus.Instance.Subscribe<CardsInitializedSignal>(OnCardsInitialized);
@@ -43,6 +48,16 @@ namespace View.UI.CardGame
         private void OnCardsInitialized(CardsInitializedSignal signal)
         {
             SetDeadwoodText(signal.DeadwoodSum);
+        }
+
+        private void OnDefaultThemeClicked()
+        {
+            ServiceLocator.Resolve<AssetBundleManager>().LoadAssetBundle(AssetBundleConstants.DefaultBundleName);
+        }
+
+        private void OnCuteThemeClicked()
+        {
+            ServiceLocator.Resolve<AssetBundleManager>().LoadAssetBundle(AssetBundleConstants.CuteCardsBundleName);
         }
 
         private void OnSortRunsClicked()

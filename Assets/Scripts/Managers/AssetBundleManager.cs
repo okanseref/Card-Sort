@@ -11,11 +11,14 @@ namespace Managers
 
         private void Start()
         {
-            StartCoroutine(LoadBundle(AssetBundleConstants.PixelatedCardsBundleName, null));
+            StartCoroutine(LoadBundle(AssetBundleConstants.CuteCardsBundleName, null));
         }
         
         private IEnumerator LoadBundle(string bundleName, Action onSuccess)
         {
+            if(_assetBundle != null && _assetBundle.name.Equals(bundleName))
+                yield break;
+            
             var bundleRequest = AssetBundle.LoadFromFileAsync(Application.streamingAssetsPath + "/" + bundleName);
         
             yield return bundleRequest;
@@ -49,11 +52,11 @@ namespace Managers
             return loadedAsset;
         }
         
-        private void LoadAssetBundle(string bundleName)
+        public void LoadAssetBundle(string bundleName)
         {
             StartCoroutine(LoadBundle(bundleName, () =>
             {
-        
+                SignalBus.Instance.Fire(new BundleChangedSignal());
             }));
         }
     }
