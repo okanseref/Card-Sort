@@ -1,21 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using Controller.Signal;
 using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using View.Card;
 using View.Card.Signal;
 
 namespace View.UI.CardGame
 {
     public class CardGameUIController : MonoBehaviour
     {
+        public CardDragController CardDragController;
         public Button SortRunsButton;
         public Button SortGroupButton;
         public Button SortSmartButton;
         public Button DefaultThemeButton;
         public Button CuteThemeButton;
         public TextMeshProUGUI DeadwoodCountText;
+
+        private bool _lockDuringInput = false;
         
         private void Start()
         {
@@ -29,13 +34,25 @@ namespace View.UI.CardGame
             SignalBus.Instance.Subscribe<CardsInitializedSignal>(OnCardsInitialized);
             SignalBus.Instance.Subscribe<DeadwoodUpdatedSignal>(OnDeadwoodUpdated);
             SignalBus.Instance.Subscribe<HandViewLockSignal>(OnHandViewLocked);
+
+            CardDragController.DragStartedCallback += OnDragStarted;
         }
 
+        private void OnDragStarted(CardView arg1, List<CardView> arg2)
+        {
+            SetLockedButtons(true);
+        }
+        
         private void OnHandViewLocked(HandViewLockSignal signal)
         {
-            SortRunsButton.interactable = !signal.IsLocked;
-            SortGroupButton.interactable = !signal.IsLocked;
-            SortSmartButton.interactable = !signal.IsLocked;
+            SetLockedButtons(signal.IsLocked);
+        }
+
+        private void SetLockedButtons(bool isLocked)
+        {
+            SortRunsButton.interactable = !isLocked;
+            SortGroupButton.interactable = !isLocked;
+            SortSmartButton.interactable = !isLocked;
         }
 
         private void SetDeadwoodText(int deadwoodCount)
@@ -89,6 +106,8 @@ namespace View.UI.CardGame
             SignalBus.Instance.Unsubscribe<CardsInitializedSignal>(OnCardsInitialized);
             SignalBus.Instance.Unsubscribe<DeadwoodUpdatedSignal>(OnDeadwoodUpdated);
             SignalBus.Instance.Unsubscribe<HandViewLockSignal>(OnHandViewLocked);
+            
+            CardDragController.DragStartedCallback -= OnDragStarted;
         }
     }
 }
