@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using View.Card.Signal;
 
 namespace View.Card
 {
@@ -10,6 +11,7 @@ namespace View.Card
         private CardView _draggingCard;
         private Vector3 _offset;
         private int _draggingFingerId = -1;
+        private bool _inputLocked = false;
 
         public Action<CardView , List<CardView>> DragStartedCallback;
         public Action<CardView> DragEndedCallback;
@@ -19,7 +21,12 @@ namespace View.Card
         {
             _draggableCardList = draggableCards;
         }
-        
+
+        private void Awake()
+        {
+            SignalBus.Instance.Subscribe<HandViewLockSignal>(OnInputLocked);
+        }
+
         void Start()
         {
             _mainCam = Camera.main;
@@ -27,6 +34,9 @@ namespace View.Card
 
         void Update()
         {
+            if(_inputLocked)
+                return;
+            
             if (Application.isMobilePlatform)
             {
                 HandleTouchInput();
@@ -35,6 +45,11 @@ namespace View.Card
             {
                 HandleMouseInput();
             }
+        }
+
+        void OnInputLocked(HandViewLockSignal signal)
+        {
+            _inputLocked = signal.IsLocked;
         }
 
         void HandleMouseInput()

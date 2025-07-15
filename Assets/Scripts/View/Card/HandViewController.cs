@@ -1,8 +1,10 @@
+using System;
 using System.Collections.Generic;
 using Controller.Signal;
 using UnityEngine;
 using View.Card.Signal;
 using View.Factory;
+using View.UI.CardGame;
 
 namespace View.Card
 {
@@ -14,6 +16,7 @@ namespace View.Card
         [SerializeField] private Transform _packRoot;
         
         private List<CardView> _myCardViews = new();
+        private int _handViewLock = 0;
         
         private void Awake()
         {
@@ -50,15 +53,23 @@ namespace View.Card
             _cardDragController.SetDraggableCards(_myCardViews);
             
             _handCardHorizontalFitter.CalculateLayout(_myCardViews.Count);
-            
-            _handCardHorizontalFitter.ApplyLayoutAnimated(_myCardViews);
+
+            ChangeLock(1);
+            _handCardHorizontalFitter.ApplyLayoutAnimated(_myCardViews, ()=>
+            {
+                ChangeLock(-1);
+            });
         }
 
         private void OnCardsSorted(CardsSortedSignal signal)
         {
             foreach (var cardMove in signal.CardMoves)
             {
-                _handCardHorizontalFitter.MoveCardToPosition(_myCardViews[cardMove.fromIndex], cardMove.toIndex);
+                ChangeLock(1);
+                _handCardHorizontalFitter.MoveCardToPosition(_myCardViews[cardMove.fromIndex], cardMove.toIndex, () =>
+                {
+                    ChangeLock(-1);
+                });
             }
 
             var newSortedList = new List<CardView>(_myCardViews);
@@ -84,7 +95,26 @@ namespace View.Card
         private void PlaceDraggedCardToPosition(CardView draggingCard)
         {
             var indexOfCard = _myCardViews.IndexOf(draggingCard);
-            _handCardHorizontalFitter.MoveCardToPosition(_myCardViews[indexOfCard], indexOfCard);
+            ChangeLock(1);
+            _handCardHorizontalFitter.MoveCardToPosition(_myCardViews[indexOfCard], indexOfCard, () =>
+            {
+                ChangeLock(-1);
+            });
+        }
+
+        private void ChangeLock(int change)
+        {
+            _handViewLock += change;
+            Debug.LogError(_handViewLock);
+            SignalBus.Instance.Fire(new HandViewLockSignal(_handViewLock != 0));
+        }
+
+        private void OnDestroy()
+        {
+            _cardDragPassDetector.OnCardPassed -= OnCardDragPassedAnotherOne;
+            _cardDragController.DragEndedCallback -= PlaceDraggedCardToPosition;
+            SignalBus.Instance.Unsubscribe<CardsInitializedSignal>(InitializeCards);
+            SignalBus.Instance.Unsubscribe<CardsSortedSignal>(OnCardsSorted);
         }
     }
 }

@@ -29,6 +29,8 @@ namespace View.UI.CardGame
             SignalBus.Instance.Subscribe<CardsInitializedSignal>(OnCardsInitialized);
             SignalBus.Instance.Subscribe<DeadwoodUpdatedSignal>(OnDeadwoodUpdated);
         }
+        
+        
 
         private void SetDeadwoodText(int deadwoodCount)
         {

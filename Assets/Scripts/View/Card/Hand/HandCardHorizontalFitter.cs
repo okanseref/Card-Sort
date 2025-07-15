@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -37,24 +38,18 @@ namespace View.Card
             }
         }
 
-        public void MoveCardToPosition(CardView cardView, int positionIndex)
+        public void MoveCardToPosition(CardView cardView, int positionIndex, Action onComplete = null)
         {
             cardView.transform.DOMove(_poses[positionIndex].position, _animDuration);
-            cardView.transform.DORotate(_poses[positionIndex].rotation.eulerAngles, _animDuration);
+            cardView.transform.DORotate(_poses[positionIndex].rotation.eulerAngles, _animDuration).OnComplete(() =>
+            {
+                onComplete?.Invoke();
+            });
             cardView.SpriteRenderer.sortingOrder = positionIndex;
         }
         
         [ContextMenu("Apply Arched Fan Layout")]
-        public void ApplyLayout(List<CardView> cardViews)
-        {
-            for (int i = 0; i < cardViews.Count && i < _poses.Count; i++)
-            {
-                MoveCardToPosition(cardViews[i], i);
-            }
-        }
-        
-        [ContextMenu("Apply Arched Fan Layout")]
-        public void ApplyLayoutAnimated(List<CardView> cardViews)
+        public void ApplyLayoutAnimated(List<CardView> cardViews, Action onComplete)
         {
             float delay = 0.5f;
             for (int i = 0; i < cardViews.Count && i < _poses.Count; i++)
@@ -63,6 +58,9 @@ namespace View.Card
                 DOVirtual.DelayedCall(delay, () =>
                 {
                     MoveCardToPosition(cardViews[index], index);
+                    
+                    if(index == cardViews.Count - 1)
+                        onComplete?.Invoke();
                 });
 
                 delay += 0.25f;
