@@ -75,13 +75,13 @@ namespace Data.Sorter
                 for (int i = 0; i < n; i++)
                     if (((mask >> i) & 1) == 1)
                         meld.Add(myCards[i]);
-                meld.Sort((x,y)=> x.GetDeadwoodValue() - y.GetDeadwoodValue());
+                meld.Sort((x,y)=> GetPriority(x) - GetPriority(y));
                 usedMelds.Add(meld);
 
                 cur = prev;
             }
 
-            usedMelds.Sort((x,y)=> x.Sum((x1)=> x1.GetDeadwoodValue()) - y.Sum((y1)=> y1.GetDeadwoodValue()));
+            usedMelds.Sort((x,y)=> x.Sum((x1)=> GetPriority(x1) - y.Sum((y1)=> GetPriority(y1))));
             
             // compute deadwood myCards
             var deadwood = new List<MyCard>();
@@ -110,6 +110,11 @@ namespace Data.Sorter
             LogToConsole("\nSorted My Cards:");
             foreach (var myCard in myCards)
                 LogToConsole($"  • {myCard}  (value {myCard.GetDeadwoodValue()})");
+        }
+
+        private int GetPriority(MyCard myCard)
+        {
+            return myCard.GetDeadwoodValue() * 100 + myCard.Rank + myCard.Suit;
         }
         
         private void LogToConsole(string output)

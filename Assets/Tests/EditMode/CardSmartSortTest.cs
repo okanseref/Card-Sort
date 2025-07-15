@@ -33,7 +33,7 @@ namespace Tests.EditMode
 
             var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
-            Assert.AreEqual(deadwoodSum, 15);
+            Assert.AreEqual(12, deadwoodSum);
         }
         
         [Test]
@@ -58,7 +58,7 @@ namespace Tests.EditMode
             
             var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
-            Assert.AreEqual(deadwoodSum, 16);
+            Assert.AreEqual(16, deadwoodSum);
         }
         
         [Test]
@@ -83,7 +83,7 @@ namespace Tests.EditMode
             
             var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
-            Assert.AreEqual(deadwoodSum, 15);
+            Assert.AreEqual(13, deadwoodSum);
         }
         
         [Test]
@@ -108,7 +108,7 @@ namespace Tests.EditMode
             
             var deadwoodSum = melds.CalculateDeadwoodSum(myCards);
             
-            Assert.AreEqual(deadwoodSum, 80);
+            Assert.AreEqual(74, deadwoodSum);
         }
         
         [Test]
@@ -140,7 +140,7 @@ namespace Tests.EditMode
                     diffAmount++;
             }
             
-            Assert.AreEqual(diffAmount, 0);
+            Assert.AreEqual(0, diffAmount);
         }
     }
 }

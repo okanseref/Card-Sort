@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Extensions;
 using Model.Card;
 
 namespace Data.Meld
@@ -12,11 +13,17 @@ namespace Data.Meld
             var melds = new List<List<MyCard>>();
 
             // sets
-            foreach (var grp in myCards.GroupBy(c => c.GetDeadwoodValue()))
+            foreach (var grp in myCards.GroupBy(c => c.Rank))
             {
                 var g = grp.ToList();
-                if (g.Count >= 3) melds.Add(g.Take(3).ToList());
-                if (g.Count == 4) melds.Add(g.ToList());
+                if (g.Count >= 3)
+                {
+                    var allPermutations = g.GetAllFullAndSubsetPermutations();
+                    foreach (var permutation in allPermutations)
+                    {
+                        melds.Add(permutation);
+                    }
+                }
             }
 
             return melds;
