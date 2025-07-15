@@ -11,6 +11,7 @@ namespace View.Card
         [SerializeField] private HandCardHorizontalFitter _handCardHorizontalFitter;
         [SerializeField] private CardDragPassDetector _cardDragPassDetector;
         [SerializeField] private CardDragController _cardDragController;
+        [SerializeField] private Transform _packRoot;
         
         private List<CardView> _myCardViews = new();
         
@@ -24,6 +25,15 @@ namespace View.Card
         {
             _cardDragPassDetector.OnCardPassed += OnCardDragPassedAnotherOne;
             _cardDragController.DragEndedCallback += PlaceDraggedCardToPosition;
+
+            CreatePackRoot();
+        }
+
+        private void CreatePackRoot()
+        {
+            var factory = ServiceLocator.Resolve<CardViewFactory>();
+            var cardView = factory.GetCardView((default, default), _packRoot.transform, true);
+            cardView.SpriteRenderer.sortingOrder = 500;
         }
 
         private void InitializeCards(CardsInitializedSignal initializedSignal)
@@ -33,6 +43,7 @@ namespace View.Card
             foreach (var myCard in initializedSignal.MyCards)
             {
                 var cardView = factory.GetCardView((myCard.Rank, myCard.Suit), _handCardHorizontalFitter.transform);
+                cardView.transform.position = _packRoot.transform.position;
                 _myCardViews.Add(cardView);
             }
 
@@ -40,7 +51,7 @@ namespace View.Card
             
             _handCardHorizontalFitter.CalculateLayout(_myCardViews.Count);
             
-            _handCardHorizontalFitter.ApplyLayout(_myCardViews);
+            _handCardHorizontalFitter.ApplyLayoutAnimated(_myCardViews);
         }
 
         private void OnCardsSorted(CardsSortedSignal signal)

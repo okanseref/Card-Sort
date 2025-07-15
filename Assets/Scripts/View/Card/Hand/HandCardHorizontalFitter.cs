@@ -52,5 +52,21 @@ namespace View.Card
                 MoveCardToPosition(cardViews[i], i);
             }
         }
+        
+        [ContextMenu("Apply Arched Fan Layout")]
+        public void ApplyLayoutAnimated(List<CardView> cardViews)
+        {
+            float delay = 0.5f;
+            for (int i = 0; i < cardViews.Count && i < _poses.Count; i++)
+            {
+                var index = i;
+                DOVirtual.DelayedCall(delay, () =>
+                {
+                    MoveCardToPosition(cardViews[index], index);
+                });
+
+                delay += 0.25f;
+            }
+        }
     }
 }
