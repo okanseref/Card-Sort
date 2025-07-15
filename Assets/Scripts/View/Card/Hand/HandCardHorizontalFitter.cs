@@ -63,7 +63,7 @@ namespace View.Card
                         onComplete?.Invoke();
                 });
 
-                delay += 0.25f;
+                delay += 0.1f;
             }
         }
     }

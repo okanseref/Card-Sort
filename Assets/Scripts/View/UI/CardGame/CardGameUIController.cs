@@ -88,6 +88,7 @@ namespace View.UI.CardGame
             SignalBus.Instance.Unsubscribe<CardsSortedSignal>(OnCardsSorted);
             SignalBus.Instance.Unsubscribe<CardsInitializedSignal>(OnCardsInitialized);
             SignalBus.Instance.Unsubscribe<DeadwoodUpdatedSignal>(OnDeadwoodUpdated);
+            SignalBus.Instance.Unsubscribe<HandViewLockSignal>(OnHandViewLocked);
         }
     }
 }

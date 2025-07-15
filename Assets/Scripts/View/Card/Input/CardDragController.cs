@@ -138,5 +138,10 @@ namespace View.Card
             _draggingCard = null;
             _draggingFingerId = -1;
         }
+
+        private void OnDestroy()
+        {
+            SignalBus.Instance.Unsubscribe<HandViewLockSignal>(OnInputLocked);
+        }
     }
 }

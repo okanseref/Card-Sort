@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Controller.Signal;
 using Data.Meld;
@@ -91,6 +92,14 @@ namespace Controller
         {
             var melds = _smartMeldRules.GenerateAllMelds(_myCards);
             return melds.CalculateDeadwoodSum(_myCards);
+        }
+
+        private void OnDestroy()
+        {
+            SignalBus.Instance.Unsubscribe<SortRunsOnlySignal>(SortRunsOnly);
+            SignalBus.Instance.Unsubscribe<SortGroupsOnlySignal>(SortGroupsOnly);
+            SignalBus.Instance.Unsubscribe<SortSmartSignal>(SortSmart);
+            SignalBus.Instance.Unsubscribe<CardSwapSignal>(OnCardSwapped);
         }
     }
 }
