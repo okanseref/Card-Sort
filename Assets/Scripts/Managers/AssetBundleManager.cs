@@ -11,7 +11,7 @@ namespace Managers
 
         private void Start()
         {
-            StartCoroutine(LoadBundle(AssetBundleConstants.CuteCardsBundleName, null));
+            StartCoroutine(LoadBundle(AssetBundleConstants.DefaultBundleName, null));
         }
         
         private IEnumerator LoadBundle(string bundleName, Action onSuccess)
