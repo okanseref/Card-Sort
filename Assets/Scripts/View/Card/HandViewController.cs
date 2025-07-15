@@ -58,6 +58,8 @@ namespace View.Card
             }
 
             _myCardViews = newSortedList;
+            
+            _cardDragController.SetDraggableCards(_myCardViews);
         }
 
         private void OnCardDragPassedAnotherOne(int draggedIndex, int passedIndex)

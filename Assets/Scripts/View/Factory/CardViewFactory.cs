@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Managers;
+﻿using Managers;
 using UnityEngine;
 using View.Card;
 using View.Pool;
