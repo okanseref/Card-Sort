@@ -81,7 +81,7 @@ namespace Data.Sorter
                 cur = prev;
             }
 
-            usedMelds.Sort((x,y)=> x.Sum((x1)=> GetPriority(x1) - y.Sum((y1)=> GetPriority(y1))));
+            usedMelds.Sort((x,y)=> x.Sum((x1)=> GetPriority(x1)) - y.Sum((y1)=> GetPriority(y1)));
             
             // compute deadwood myCards
             var deadwood = new List<MyCard>();
