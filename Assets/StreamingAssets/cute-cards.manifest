@@ -1,0 +1,74 @@
+ManifestFileVersion: 0
+CRC: 3353689013
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c78169ee67d4d8e502dd771a6e3c9ca5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: c78169ee67d4d8e502dd771a6e3c9ca5
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/BundleSources/CuteCards/Cards/Diamonds9.png
+- Assets/BundleSources/CuteCards/Cards/Hearts5.png
+- Assets/BundleSources/CuteCards/Cards/SpadesQueen.png
+- Assets/BundleSources/CuteCards/Cards/Clubs3.png
+- Assets/BundleSources/CuteCards/Cards/Clubs10.png
+- Assets/BundleSources/CuteCards/Cards/DiamondsQueen.png
+- Assets/BundleSources/CuteCards/Cards/Hearts6.png
+- Assets/BundleSources/CuteCards/Cards/DiamondsKing.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds3.png
+- Assets/BundleSources/CuteCards/Cards/Clubs9.png
+- Assets/BundleSources/CuteCards/Cards/Hearts8.png
+- Assets/BundleSources/CuteCards/CardBack/CardBg.png
+- Assets/BundleSources/CuteCards/Cards/Clubs7.png
+- Assets/BundleSources/CuteCards/Cards/Hearts2.png
+- Assets/BundleSources/CuteCards/Cards/ClubsQueen.png
+- Assets/BundleSources/CuteCards/Cards/Spades8.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds7.png
+- Assets/BundleSources/CuteCards/Cards/Hearts10.png
+- Assets/BundleSources/CuteCards/Cards/Hearts7.png
+- Assets/BundleSources/CuteCards/Cards/Spades2.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds8.png
+- Assets/BundleSources/CuteCards/Cards/Spades7.png
+- Assets/BundleSources/CuteCards/Cards/DiamondsAce.png
+- Assets/BundleSources/CuteCards/Cards/Hearts3.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds6.png
+- Assets/BundleSources/CuteCards/Cards/DiamondsJack.png
+- Assets/BundleSources/CuteCards/Cards/SpadesJack.png
+- Assets/BundleSources/CuteCards/Cards/Clubs8.png
+- Assets/BundleSources/CuteCards/Cards/ClubsJack.png
+- Assets/BundleSources/CuteCards/Cards/ClubsKing.png
+- Assets/BundleSources/CuteCards/Cards/Clubs4.png
+- Assets/BundleSources/CuteCards/Cards/Spades9.png
+- Assets/BundleSources/CuteCards/Cards/Clubs2.png
+- Assets/BundleSources/CuteCards/Cards/Clubs5.png
+- Assets/BundleSources/CuteCards/Cards/Spades6.png
+- Assets/BundleSources/CuteCards/Cards/Spades5.png
+- Assets/BundleSources/CuteCards/Cards/SpadesKing.png
+- Assets/BundleSources/CuteCards/Cards/ClubsAce.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds5.png
+- Assets/BundleSources/CuteCards/Cards/HeartsKing.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds10.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds4.png
+- Assets/BundleSources/CuteCards/Cards/Diamonds2.png
+- Assets/BundleSources/CuteCards/Cards/Spades4.png
+- Assets/BundleSources/CuteCards/Cards/Hearts9.png
+- Assets/BundleSources/CuteCards/Cards/HeartsAce.png
+- Assets/BundleSources/CuteCards/Cards/HeartsJack.png
+- Assets/BundleSources/CuteCards/Cards/Hearts4.png
+- Assets/BundleSources/CuteCards/Cards/Clubs6.png
+- Assets/BundleSources/CuteCards/Cards/Spades3.png
+- Assets/BundleSources/CuteCards/Cards/HeartsQueen.png
+- Assets/BundleSources/CuteCards/Cards/Spades10.png
+- Assets/BundleSources/CuteCards/Cards/SpadesAce.png
+Dependencies: []

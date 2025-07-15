@@ -1,0 +1,76 @@
+ManifestFileVersion: 0
+CRC: 581135468
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7fac4cc485ff8ac5ebd4e26c1c7cda76
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 033fafe2c9f6c610c3a734393882fd4c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 7fac4cc485ff8ac5ebd4e26c1c7cda76
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/BundleSources/DefaultCards/Cards/DiamondsJack.png
+- Assets/BundleSources/DefaultCards/Cards/Spades8.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs10.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds5.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts7.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts9.png
+- Assets/BundleSources/DefaultCards/Cards/ClubsAce.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds7.png
+- Assets/BundleSources/DefaultCards/Cards/HeartsQueen.png
+- Assets/BundleSources/DefaultCards/Cards/ClubsKing.png
+- Assets/BundleSources/DefaultCards/Cards/SpadesQueen.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds6.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds4.png
+- Assets/BundleSources/DefaultCards/Cards/HeartsKing.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds8.png
+- Assets/BundleSources/DefaultCards/Cards/SpadesKing.png
+- Assets/BundleSources/DefaultCards/CardBack/CardBg.png
+- Assets/BundleSources/DefaultCards/Cards/Spades2.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts10.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs9.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts3.png
+- Assets/BundleSources/DefaultCards/Cards/Spades7.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts6.png
+- Assets/BundleSources/DefaultCards/Cards/Spades9.png
+- Assets/BundleSources/DefaultCards/Cards/HeartsJack.png
+- Assets/BundleSources/DefaultCards/Cards/SpadesAce.png
+- Assets/BundleSources/DefaultCards/Cards/HeartsAce.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds10.png
+- Assets/BundleSources/DefaultCards/Cards/DiamondsQueen.png
+- Assets/BundleSources/DefaultCards/Cards/DiamondsAce.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds3.png
+- Assets/BundleSources/DefaultCards/Cards/Spades5.png
+- Assets/BundleSources/DefaultCards/Cards/Spades4.png
+- Assets/BundleSources/DefaultCards/Cards/Spades6.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs7.png
+- Assets/BundleSources/DefaultCards/Cards/ClubsJack.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts8.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs2.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs6.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts4.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs8.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds2.png
+- Assets/BundleSources/DefaultCards/Cards/ClubsQueen.png
+- Assets/BundleSources/DefaultCards/Cards/Diamonds9.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts2.png
+- Assets/BundleSources/DefaultCards/Cards/SpadesJack.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs5.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs4.png
+- Assets/BundleSources/DefaultCards/Cards/DiamondsKing.png
+- Assets/BundleSources/DefaultCards/Cards/Spades3.png
+- Assets/BundleSources/DefaultCards/Cards/Spades10.png
+- Assets/BundleSources/DefaultCards/Cards/Hearts5.png
+- Assets/BundleSources/DefaultCards/Cards/Clubs3.png
+Dependencies: []
