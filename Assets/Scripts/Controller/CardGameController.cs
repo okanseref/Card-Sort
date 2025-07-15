@@ -14,10 +14,18 @@ namespace Controller
         private DPCardSorter _cardSorter = new();
         private RunMeldRule _runMeldRule = new();
         private GroupMeldRule _groupMeldRule = new();
-        private List<MyCard> _myCards;
         
+        private List<MyCard> _myCards;
+        private List<IMeldRule> _runMeldRules;
+        private List<IMeldRule> _groupMeldRules;
+        private List<IMeldRule> _smartMeldRules;
+
         void Start()
         {
+            _runMeldRules = new List<IMeldRule>() { _runMeldRule };
+            _groupMeldRules = new List<IMeldRule>() { _groupMeldRule };
+            _smartMeldRules = new List<IMeldRule>() { _runMeldRule, _groupMeldRule };
+            
             _myCards = new List<MyCard>
             {
                 new MyCard(4, 'H'), new MyCard(5, 'H'), new MyCard(6, 'H'),
@@ -27,8 +35,11 @@ namespace Controller
             };
             
             SubscribeToSignals();
+
+            var melds = _smartMeldRules.GenerateAllMelds(_myCards);
+            var initialDeadwoodSum = melds.CalculateDeadwoodSum(_myCards);
             
-            SignalBus.Instance.Fire(new CardsInitializedSignal(new List<MyCard>(_myCards)));
+            SignalBus.Instance.Fire(new CardsInitializedSignal(new List<MyCard>(_myCards), initialDeadwoodSum));
         }
 
         private void SubscribeToSignals()
@@ -43,31 +54,22 @@ namespace Controller
         {
             (_myCards[signal.OldIndex], _myCards[signal.NewIndex]) =
                 (_myCards[signal.NewIndex], _myCards[signal.OldIndex]);
+            SignalBus.Instance.Fire(new DeadwoodUpdatedSignal(CalculateSmartMeldsDeadwoodSum(_myCards)));
         }
 
         private void SortRunsOnly()
         {
-            SortInternal(new List<IMeldRule>()
-            {
-                _runMeldRule
-            }, _myCards);
+            SortInternal(_runMeldRules, _myCards);
         }
 
         private void SortGroupsOnly()
         {
-            SortInternal(new List<IMeldRule>()
-            {
-                _groupMeldRule
-            }, _myCards);
+            SortInternal(_groupMeldRules, _myCards);
         }
 
         private void SortSmart()
         {
-            SortInternal(new List<IMeldRule>()
-            {
-                _runMeldRule,
-                _groupMeldRule
-            }, _myCards);
+            SortInternal(_smartMeldRules, _myCards);
         }
 
         private void SortInternal(List<IMeldRule> meldRules, List<MyCard> _myCards)
@@ -80,7 +82,15 @@ namespace Controller
 
             var cardMoves = oldCardOrder.GetCardMoves(_myCards);
             
-            SignalBus.Instance.Fire(new CardsSortedSignal(cardMoves));
+            var deadwoodSum = CalculateSmartMeldsDeadwoodSum(_myCards);
+            
+            SignalBus.Instance.Fire(new CardsSortedSignal(cardMoves, deadwoodSum));
+        }
+
+        private int CalculateSmartMeldsDeadwoodSum(List<MyCard> _myCards)
+        {
+            var melds = _smartMeldRules.GenerateAllMelds(_myCards);
+            return melds.CalculateDeadwoodSum(_myCards);
         }
     }
 }
