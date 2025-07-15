@@ -21,9 +21,13 @@ public class LoaderViewController : MonoBehaviour
 
     public void OnLoadFinished()
     {
-        canvasGroup.DOFade(0, 0.5f).OnComplete(() =>
+        DOVirtual.DelayedCall(0.3f, () =>
         {
-            viewRoot.gameObject.SetActive(false);
+            canvasGroup.DOFade(0, 0.5f).OnComplete(() =>
+            {
+                viewRoot.gameObject.SetActive(false);
+            });
         });
+
     }
 }

@@ -93,7 +93,6 @@ namespace Data.Sorter
 
             myCards.Clear();
 
-#if UNITY_EDITOR
             LogToConsole("\n▶Melds used:");
             foreach (var m in usedMelds)
             {
@@ -108,6 +107,7 @@ namespace Data.Sorter
                 myCards.Add(c);
             }
 
+#if UNITY_EDITOR
             LogToConsole("\nSorted My Cards:");
             foreach (var myCard in myCards)
                 LogToConsole($"  • {myCard}  (value {myCard.GetDeadwoodValue()})");
