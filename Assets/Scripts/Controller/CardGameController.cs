@@ -14,8 +14,8 @@ namespace Controller
         private DPCardSorter _cardSorter = new();
         private RunMeldRule _runMeldRule = new();
         private GroupMeldRule _groupMeldRule = new();
-
-        private new List<MyCard> _myCards;
+        private List<MyCard> _myCards;
+        
         void Start()
         {
             _myCards = new List<MyCard>
@@ -36,6 +36,13 @@ namespace Controller
             SignalBus.Instance.Subscribe<SortRunsOnlySignal>(SortRunsOnly);
             SignalBus.Instance.Subscribe<SortGroupsOnlySignal>(SortGroupsOnly);
             SignalBus.Instance.Subscribe<SortSmartSignal>(SortSmart);
+            SignalBus.Instance.Subscribe<CardSwapSignal>(OnCardSwapped);
+        }
+
+        private void OnCardSwapped(CardSwapSignal signal)
+        {
+            (_myCards[signal.OldIndex], _myCards[signal.NewIndex]) =
+                (_myCards[signal.NewIndex], _myCards[signal.OldIndex]);
         }
 
         private void SortRunsOnly()
